@@ -22,10 +22,10 @@ if (reg1.test($request.url)) {
     $persistentStore.write(ua, 'tf_ua')
     console.log($request.headers)
     if ($persistentStore.read('request_id') !== null) {
-      $notification.post('Lấy thông tin', 'Thành công, vui lòng đóng tập lệnh!','')
+      $notification.post('Lấy thông tin', 'Thành công!','')
 
     } else {
-      $notification.post('Lấy thông tin', 'Thất bại!!, vui lòng bật chuyển đổi Mitm qua HTTP2 và khởi động lại VPN và Ứng dụng TestFlight! ','')
+      $notification.post('Lấy thông tin','Thất bại!!, tắt VPN và mở lại.','')
     }
     $done({})
 }
@@ -42,7 +42,7 @@ if (reg2.test($request.url)) {
     appId = arr.join(",");
   }
   $persistentStore.write(appId, "APP_ID");
-  $notification.post("TestFlight Tự động tham gia", `APP_ID đã được thêm: ${id}`, `ID hiện tại: ${appId}`);
+  $notification.post("Tham gia tự động", `Thêm APP_ID: ${id}`, `ID hiện tại: ${appId}`);
   $done({})
 }
 function unique(arr) {
